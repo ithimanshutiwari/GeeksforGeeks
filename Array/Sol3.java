@@ -1,5 +1,4 @@
-// 2.Search, insert and delete in a sorted array
-
+// 3.Given an array A[] and a number x, check for pair in A[] with sum as x
 import java.util.*;
 import java.io.*;
 
