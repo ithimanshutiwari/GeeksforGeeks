@@ -7,7 +7,8 @@ public class Sol3{
 	public static void main(String[] args) throws Exception{
 		
 		Scanner sc=new Scanner(System.in);
-		
+		int max = 99999;
+		int[] b = new int[max];
 		// Taking Array Size		
 		int n   = sc.nextInt();
 		int[] a = new int[n];
@@ -22,7 +23,7 @@ public class Sol3{
 			System.out.print(a[i]+" ");
 		System.out.println("\n");
 		
-		//Brute Force Approach
+		//Optimized O(n) Solution
 		int x = sc.nextInt();
 		System.out.print("Solving the problem.");
 		Thread.sleep(1000);
@@ -32,12 +33,17 @@ public class Sol3{
 		Thread.sleep(1000);
 		System.out.print(".\n\n");
 
-		for(int i=0;i<n-1;i++){
-			for(int j=i+1;j<n;j++){
-				if(a[i]+a[j]==x)
-					System.out.println(a[i]+","+a[j]);
+		
+		int flag=1;
+		for(int i=0;i<n;i++){
+			if((x-a[i])>=0 && (b[x-a[i]]==1)){
+				flag=0;				
+				System.out.println(a[i]+","+(x-a[i]));
 			}
+			b[a[i]]=1;
 		}
+		if(flag==1)
+			System.out.println("Whoops!!! No Solution");
 	}
 }
 		
