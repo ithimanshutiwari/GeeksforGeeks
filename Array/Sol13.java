@@ -7,13 +7,7 @@ import java.io.*;
 
 public class Sol13{
 
-	static int gcd(int a, int b){
-		if(b==0)
-			return a;
-		return gcd(b,a%b);	
-	}
-	
-	
+		
 	static void arrayRotate(int[] a,int d){
 		reverse(a,0,d-1);
 		reverse(a,d,a.length-1);
