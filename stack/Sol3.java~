@@ -1,14 +1,53 @@
+// Uses Sol2 for Infix to Postfix and added method evaluate postfix using stack in O(n)
 import java.io.*;
 import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Sol2 {
+public class Sol3 {
+
+	static int eval(String s){
+		//System.out.println(s);
+		Stack<Integer> st = new Stack<Integer>();
+		for(int i=0;i<s.length();i++){
+			if(Character.isDigit(s.charAt(i))){
+				st.push(Character.digit(s.charAt(i),10));			
+			}
+			else{
+				if(s.charAt(i)=='+'){
+					int x = (int)st.pop();
+					int y = (int)st.pop();
+					st.push(y+x);				
+				}
+				else if(s.charAt(i)=='-'){
+					int x = (int)st.pop();
+					int y = (int)st.pop();
+					st.push(y-x);				
+				}
+				else if(s.charAt(i)=='*'){
+					int x = (int)st.pop();
+					int y = (int)st.pop();
+					st.push(y*x);				
+				}
+				else if(s.charAt(i)=='/'){
+					int x = (int)st.pop();
+					int y = (int)st.pop();
+					st.push(y/x);				
+				}
+				else if(s.charAt(i)=='^'){
+					int x = (int)st.pop();
+					int y = (int)st.pop();
+					st.push((int)Math.pow(y,x));				
+				}			
+			}		
+		}
+		return (int)st.peek();
+	}	
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+        int n = sc.nextInt();
         HashMap<Character,Integer> map = new HashMap<Character,Integer>();
         map.put('(',0);
         map.put('+',1);
@@ -17,8 +56,9 @@ public class Sol2 {
         map.put('/',2);
         map.put('^',3);
         Stack st = new Stack();
-        while(t-->0){
+        while(n-->0){
             String s = sc.next();
+	    String t = "";
             for(int i=0;i<s.length();i++){
                 if(s.charAt(i)=='(')
                     st.push('(');
@@ -28,12 +68,12 @@ public class Sol2 {
                     if(st.isEmpty() ||(int)map.get(s.charAt(i))>(int)map.get((char)st.peek()))
                        st.push(s.charAt(i));
                     else{
-                        while(!st.isEmpty() && (int)map.get(s.charAt(i))<=(int)map.get((char)st.peek())){
+                        while(st.isEmpty() && (int)map.get(s.charAt(i))<=(int)map.get((char)st.peek())){
                             char x = (char)st.pop();
                             if(x=='(')
                                 continue;
                             else
-                                System.out.print(x);
+                                t+=x;
                         }
                         st.push(s.charAt(i));
                     }
@@ -41,12 +81,12 @@ public class Sol2 {
                 }
                 else if(s.charAt(i)==')'){
                     while((char)st.peek()!='(')
-                        System.out.print(st.pop());
+                        t+=(char)st.pop();
                     st.pop();
                                         
                 }
                 else
-                    System.out.print(s.charAt(i));
+                    t+=s.charAt(i);
                 
                 //System.out.println("\n***"+st.peek()+"***");
                     
@@ -57,11 +97,11 @@ public class Sol2 {
                             if(x=='(')
                                 continue;
                             else
-                                System.out.print(x);
+                                t+=x;
                 }
                 
             }
-            System.out.println();
+            System.out.println(eval(t));
        }
     }
 }

@@ -40,7 +40,7 @@ public class Sol2 {
                      
                 }
                 else if(s.charAt(i)==')'){
-                    while(st.peek()!='(')
+                    while((char)st.peek()!='(')
                         System.out.print(st.pop());
                     st.pop();
                                         
