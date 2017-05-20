@@ -1,5 +1,5 @@
 /*
-1. Check if a string can be obtained by rotating another string 2 places
+1. Check if a string can be obtained by rotating another string 2 places: http://www.geeksforgeeks.org/check-string-can-obtained-rotating-another-string-2-places/
 Time O(n) and O(1) space
 */
 

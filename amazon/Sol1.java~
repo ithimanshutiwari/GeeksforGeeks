@@ -1,3 +1,8 @@
+/*
+1. Check if a string can be obtained by rotating another string 2 places
+Time O(n) and O(1) space
+*/
+
 import java.util.*;
 public class Sol1{
 	public static void main(String[] args){
