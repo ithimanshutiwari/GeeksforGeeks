@@ -1,7 +1,6 @@
 /*
 17. Find maximum of minimum for every window size in a given array
 http://www.geeksforgeeks.org/find-the-maximum-of-minimums-for-every-window-size-in-a-given-array/
-
 Naive Approach
 Time O(n^3) and O(n) space
 */
