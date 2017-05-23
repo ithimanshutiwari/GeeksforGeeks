@@ -2,3 +2,4 @@ Sol7 Next Greater element
 Sol10 Stock Span Problem
 Sol17_b Maximum of minimum
 Sol19	Min. bracket reversal
+Sol25 Celebrity Problem
